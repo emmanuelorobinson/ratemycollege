@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Header from "../components/Header";
 
 export default function Home() {
   const meta = {
@@ -28,7 +29,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>RateMyCollege</h1>
+        <Header/>
       </main>
     </div>
   );
