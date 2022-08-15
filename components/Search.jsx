@@ -7,7 +7,7 @@ const Search = () => {
   return (
     <StyledSearch>
       <div className="back-img"></div>
-      {/* <h1>The #1 student focused site for college reviews</h1> */}
+      <h1>The #1 student focused site for college reviews</h1>
       <div>
         <form action="">
           <div className="img">
