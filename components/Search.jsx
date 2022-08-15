@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import isMobile from "../utils/isMobile";
 
 const Search = () => {
   return (
@@ -36,13 +37,18 @@ const StyledSearch = styled.div`
   align-items: center;
   justify-content: center;
 
+
   h1 {
     /* The #1 student focused site for college reviews */
     font-style: normal;
     font-weight: 800;
     font-size: 32px;
-
     color: #ffffff;
+    text-align: center;
+
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      font-size:3.2vh
+    }
   }
 
   form {
@@ -56,6 +62,10 @@ const StyledSearch = styled.div`
     border: 1px solid #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      width: 48.7vh
+    }
   }
 
   .img {
@@ -74,6 +84,10 @@ const StyledSearch = styled.div`
     outline: none;
     font-size: 16px;
     color: #262626;
+
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      width: inherit
+    }
   }
 `;
 
