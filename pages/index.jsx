@@ -1,7 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
+import Search from "../components/Search";
+import Feature from "../components/Feature";
+import Footer from "../components/Footer";
+import styled from "styled-components";
 
 export default function Home() {
   const meta = {
@@ -12,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <StyledLanding>
       <Head>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -29,8 +31,19 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header/>
+        <Header />
+        <Search />
+        <Feature />
+        <Footer />
+
       </main>
-    </div>
+    </StyledLanding>
   );
 }
+
+const StyledLanding = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
