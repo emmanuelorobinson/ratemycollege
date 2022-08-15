@@ -118,7 +118,7 @@ const StyledFeature = styled.div`
     margin-top: 80px;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      width: 40vh;
+      width: 92vw;
       margin-left: 20px;
       margin-right: 20px;
       margin-top: 30px;
@@ -129,7 +129,7 @@ const StyledFeature = styled.div`
       font-size: 32px;
 
       @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-        font-size: 3.2vh
+        font-size: 6vw
       }
       
     }
@@ -138,7 +138,7 @@ const StyledFeature = styled.div`
       font-size: 20px;
 
       @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-        font-size: 2.4vh
+        font-size: 4.4vw
       }
     }
 

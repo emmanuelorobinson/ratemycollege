@@ -47,7 +47,7 @@ const StyledSearch = styled.div`
     text-align: center;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      font-size:2.7vh
+      font-size:5vw
     }
   }
 
@@ -64,7 +64,7 @@ const StyledSearch = styled.div`
     border-radius: 10px;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      width: 35vh
+      width: 80vw
     }
   }
 
