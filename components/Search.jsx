@@ -6,7 +6,8 @@ import isMobile from "../utils/isMobile";
 const Search = () => {
   return (
     <StyledSearch>
-      <h1>The #1 student focused site for college reviews</h1>
+      <div className="back-img"></div>
+      {/* <h1>The #1 student focused site for college reviews</h1> */}
       <div>
         <form action="">
           <div className="img">
@@ -29,17 +30,29 @@ const StyledSearch = styled.div`
   flex-direction: column;
   width: 100%;
   height: 422px;
-  background-color: #262626;
-  background-image: url("/search.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+
   align-items: center;
   justify-content: center;
 
+  .back-img {
+    position: absolute;
+
+    width: 100%;
+    height: 422px;
+    overflow: hidden;
+
+    background-color: #262626;
+    background-image: url("/search.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    //filter: blur(3px);
+  }
 
   h1 {
     /* The #1 student focused site for college reviews */
+    position: relative;
+
     font-style: normal;
     font-weight: 800;
     font-size: 32px;
@@ -47,12 +60,13 @@ const StyledSearch = styled.div`
     text-align: center;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      font-size:5vw
+      font-size: 5vw;
     }
   }
 
   form {
     display: flex;
+    position: relative;
 
     box-sizing: border-box;
     width: 400px;
@@ -64,7 +78,7 @@ const StyledSearch = styled.div`
     border-radius: 10px;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      width: 80vw
+      width: 80vw;
     }
   }
 
@@ -86,7 +100,7 @@ const StyledSearch = styled.div`
     color: #262626;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      width: inherit
+      width: inherit;
     }
   }
 `;
