@@ -87,6 +87,8 @@ const StyledFeature = styled.div`
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
       grid-template-columns: repeat(1, 1fr);
+      margin-left: 0;
+      margin-right: 0;
     }
     
   }
@@ -116,10 +118,11 @@ const StyledFeature = styled.div`
     margin-top: 80px;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      width: 50vh;
+      width: 40vh;
       margin-left: 20px;
       margin-right: 20px;
       margin-top: 30px;
+
     }
 
     h2 {
@@ -146,7 +149,9 @@ const StyledFeature = styled.div`
     margin-left: 400px;
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
-      margin-left: 0px;
+      margin-left: 5px;
+      width: 90%;
+      margin-top: 100px;
     }
   }
 
@@ -155,8 +160,8 @@ const StyledFeature = styled.div`
 
     @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
       margin-top: 70px;
-      margin-right: 20px;
-      margin-left: 20px;
+      margin-left: 40px;
+      width: 80%;
     }
   }
 `;
