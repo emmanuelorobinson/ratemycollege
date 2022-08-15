@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import isMobile from "../utils/isMobile";
 
 const Feature = () => {
   return (
@@ -14,7 +15,9 @@ const Feature = () => {
               width={146}
               height={134}
             />
-            <p>Rate the <span>campus</span></p>
+            <p>
+              Rate the <span>campus</span>
+            </p>
           </div>
           <div className="points">
             <Image
@@ -23,7 +26,9 @@ const Feature = () => {
               width={146}
               height={134}
             />
-            <p>Rate the <span>faculty</span></p>
+            <p>
+              Rate the <span>faculty</span>
+            </p>
           </div>
           <div className="points">
             <Image
@@ -32,7 +37,9 @@ const Feature = () => {
               width={146}
               height={134}
             />
-            <p>Rate the <span>community</span></p>
+            <p>
+              Rate the <span>community</span>
+            </p>
           </div>
         </div>
         <div className="sample-review">
@@ -67,11 +74,21 @@ const StyledFeature = styled.div`
   width: 100%;
   margin-top: 70px;
 
+  @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
   .mainsvg {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-left: 80px;
     margin-right: 120px;
+
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    
   }
 
   .points {
@@ -98,12 +115,28 @@ const StyledFeature = styled.div`
     margin-left: 120px;
     margin-top: 80px;
 
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      width: 50vh;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 30px;
+    }
+
     h2 {
       font-size: 32px;
+
+      @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+        font-size: 3.2vh
+      }
+      
     }
 
     p {
       font-size: 20px;
+
+      @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+        font-size: 2.4vh
+      }
     }
 
     color: #000000;
@@ -111,10 +144,20 @@ const StyledFeature = styled.div`
 
   .ranger {
     margin-left: 400px;
+
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      margin-left: 0px;
+    }
   }
 
   .img {
     margin-right: 90px;
+
+    @media screen and (max-width: ${isMobile ? "600px" : "1024px"}) {
+      margin-top: 70px;
+      margin-right: 20px;
+      margin-left: 20px;
+    }
   }
 `;
 
