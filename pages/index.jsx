@@ -32,10 +32,10 @@ export default function Home() {
       </Head>
 
       <main>
-        {/* <Header />
+        <Header />
         <Search />
         <Feature />
-        <Footer /> */}
+        <Footer />
         <Modal />
 
       </main>
