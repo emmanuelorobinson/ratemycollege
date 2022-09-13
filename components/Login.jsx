@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { loginActions } from "../store/login-slice";
 
 const Login = (props) => {
-
   const router = useRouter();
   const { user, login } = useAuth();
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Login = (props) => {
       await login(data.email, data.password);
 
       dispatch(loginActions.showSignInModal());
-      router.push('/')
+      router.push("/");
     } catch (err) {
       console.log(err);
       alert("Invalid email or password");
@@ -33,7 +32,6 @@ const Login = (props) => {
         email: "",
         password: "",
       });
-
     }
   };
 
@@ -51,6 +49,7 @@ const Login = (props) => {
               name="email"
               id="email"
               type="email"
+              placeholder="example@college.edu.au"
               value={data.email}
               onChange={(e) => {
                 setData({ ...data, email: e.target.value });
@@ -63,6 +62,7 @@ const Login = (props) => {
               name="password"
               id="password"
               type="password"
+              placeholder="********"
               value={data.password}
               onChange={(e) => {
                 setData({ ...data, password: e.target.value });
@@ -150,6 +150,13 @@ const StyledLogin = styled.div`
       background-color: #357f7f;
       border-radius: 5px;
       font-weight: 550;
+      cursor: pointer;
+
+      /* on hover darken with ease*/
+      &:hover {
+        background-color: #2d6a6a;
+        transition: 0.3s ease;
+      }
     }
   }
 
@@ -168,6 +175,13 @@ const StyledLogin = styled.div`
       span {
         font-weight: 700;
         color: #000000;
+
+        &:hover {
+          color: #2d6a6a;
+          transition: 0.3s ease;
+        }
+
+        cursor: pointer;
       }
     }
   }
