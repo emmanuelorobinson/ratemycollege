@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -14,7 +15,15 @@ const Header = () => {
         />
       </div>
       <div className="signin">
-        <p>Coming Soon...</p>
+        {/* sign in opens load modal component */}
+        
+        {/* <Link href="/signin">
+          <p>Sign In</p>
+        </Link> */}
+
+
+        
+        
       </div>
     </StyledHeader>
   );
@@ -26,6 +35,11 @@ const StyledHeader = styled.nav`
   justify-content: space-between;
   width: 100%;
   height: 46px;
+
+  /* mouse cursur on p  */
+  p {
+    cursor: pointer;
+  }
 
   .signin {
     margin-right: 10px;

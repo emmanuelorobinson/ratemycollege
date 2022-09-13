@@ -4,6 +4,7 @@ import Search from "../components/Search";
 import Feature from "../components/Feature";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import Modal from "../components/Modal";
 
 export default function Home() {
   const meta = {
@@ -31,10 +32,11 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header />
+        {/* <Header />
         <Search />
         <Feature />
-        <Footer />
+        <Footer /> */}
+        <Modal />
 
       </main>
     </StyledLanding>
