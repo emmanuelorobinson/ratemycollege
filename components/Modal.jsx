@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginActions } from "../store/login-slice";
 
 const Modal = ({ showModal, setShowModal }) => {
-
   const dispatch = useDispatch();
 
   const modalRef = useRef();
@@ -29,24 +28,21 @@ const Modal = ({ showModal, setShowModal }) => {
     //window.location.reload();
   };
 
-  const keyPress = useCallback(
-    (e) => {
-      if (e.key === "Escape" && showModal) {
-        // setShowModal(false);
-        dispatch(loginActions.showSignInModal());
-        console.log("I pressed");
-      }
-    },
-  );
+  const keyPress = useCallback((e) => {
+    if (e.key === "Escape" && showModal) {
+      // setShowModal(false);
+      dispatch(loginActions.showSignInModal());
+      console.log("I pressed");
+    }
+  });
 
   const [signIn, setSignIn] = useState(true);
 
   const isSignIn = () => {
-    
     const signed = !signIn;
 
     setSignIn(signed);
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
@@ -61,9 +57,11 @@ const Modal = ({ showModal, setShowModal }) => {
             <ModalWrapper showModal={showModal}>
               {/* <ModalImg src={require('./modal.jpg')} alt='camera' /> */}
               <ModalContent>
-                {
-                  signIn ? (<Login signIn={isSignIn} />) : (<SignUp signIn={isSignIn}/>)
-                }
+                {signIn ? (
+                  <Login signIn={isSignIn} />
+                ) : (
+                  <SignUp signIn={isSignIn} />
+                )}
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
@@ -133,6 +131,5 @@ const CloseModalButton = styled(MdClose)`
   padding: 0;
   z-index: 10;
 `;
-
 
 export default Modal;

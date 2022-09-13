@@ -41,7 +41,7 @@ const SignUp = (props) => {
     <StyledLogin>
       <div className="header">
         <h1>Hi! Sign Up!</h1>
-        <p>What are you waiting for, sign up! Please enter your details.</p>
+        <p>Coming soon, but feel free to sign up!.</p>
       </div>
       <div className="form">
         <form onSubmit={handleSignUp}>
@@ -51,6 +51,7 @@ const SignUp = (props) => {
               name="email"
               id="email"  
               type="email"
+              placeholder="example@college.edu.au"
               value={data.email}
               onChange={(e) => {
                 setData({ ...data, email: e.target.value });
@@ -63,6 +64,7 @@ const SignUp = (props) => {
               name="password"
               id="password"
               type="password"
+              placeholder="********"
               value={data.password}
               onChange={(e) => {
                 setData({ ...data, password: e.target.value });
@@ -150,6 +152,11 @@ const StyledLogin = styled.div`
       background-color: #357f7f;
       border-radius: 5px;
       font-weight: 550;
+
+      &:hover {
+        background-color: #2d6a6a;
+        transition: 0.3s ease;
+      }
     }
   }
 
@@ -168,6 +175,13 @@ const StyledLogin = styled.div`
       span {
         font-weight: 700;
         color: #000000;
+
+        &:hover {
+          color: #2d6a6a;
+          transition: 0.3s ease;
+        }
+
+        cursor: pointer;
       }
     }
   }

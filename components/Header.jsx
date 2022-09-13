@@ -59,6 +59,12 @@ const StyledHeader = styled.nav`
 
   /* mouse cursur on p  */
   p {
+
+    font-weight: 600;
+    &:hover {
+      color: #2d6a6a;
+      transition: 0.3s ease;
+    }
     cursor: pointer;
   }
 
