@@ -4,6 +4,10 @@ import Search from "../components/Search";
 import Feature from "../components/Feature";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import Modal from "../components/Modal";
+
+import { useSelector } from "react-redux";
+
 
 export default function Home() {
   const meta = {
@@ -12,6 +16,8 @@ export default function Home() {
     image: "/logo.png",
     type: "website",
   };
+
+  const showModal = useSelector((state) => state.login.showSignInModal);
 
   return (
     <StyledLanding>
@@ -35,6 +41,7 @@ export default function Home() {
         <Search />
         <Feature />
         <Footer />
+        <Modal showModal={showModal} />
 
       </main>
     </StyledLanding>
