@@ -1,55 +1,55 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../context/AuthContext";
-import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../store/login-slice";
+import { useRouter } from "next/router";
 
-const Login = (props) => {
+const SignUp = (props) => {
 
   const router = useRouter();
-  const { user, login } = useAuth();
+  const { user, signup } = useAuth();
   const dispatch = useDispatch();
 
+  console.log(user);
   const [data, setData] = useState({
     email: "",
     password: "",
   });
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
-    console.log(user);
     try {
-      await login(data.email, data.password);
+      await signup(data.email, data.password);
+
+      console.log(user);
 
       dispatch(loginActions.showSignInModal());
-      router.push('/')
+      router.push('/');
     } catch (err) {
       console.log(err);
       alert("Invalid email or password");
-      // clear input fields
       setData({
         email: "",
         password: "",
       });
-
     }
   };
 
   return (
     <StyledLogin>
       <div className="header">
-        <h1>Hi there!</h1>
-        <p>Welcome back! Please enter your details.</p>
+        <h1>Hi! Sign Up!</h1>
+        <p>What are you waiting for, sign up! Please enter your details.</p>
       </div>
       <div className="form">
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSignUp}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
               name="email"
-              id="email"
+              id="email"  
               type="email"
               value={data.email}
               onChange={(e) => {
@@ -76,14 +76,14 @@ const Login = (props) => {
       </div>
       <div className="footer">
         <p>
-          Don&apos;t have an account?{" "}
+          Already have an account?{" "}
           <span>
             <a
               onClick={() => {
                 props.signIn();
               }}
             >
-              Sign up for free
+              Sign in!
             </a>
           </span>
         </p>
@@ -154,7 +154,7 @@ const StyledLogin = styled.div`
   }
 
   .footer {
-    margin-left: 120px;
+    margin-left: 150px;
 
     p {
       /* Welcome back! Please enter your details. */
@@ -173,4 +173,4 @@ const StyledLogin = styled.div`
   }
 `;
 
-export default Login;
+export default SignUp;
