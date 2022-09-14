@@ -72,7 +72,7 @@ const SignUp = (props) => {
             />
           </div>
           <div className="form-group">
-            <button type="submit">Sign in</button>
+            <button type="submit">Sign up</button>
           </div>
         </form>
       </div>
