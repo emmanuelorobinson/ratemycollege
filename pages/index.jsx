@@ -11,8 +11,8 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   const meta = {
-    title: "RateMyCollegeDubai",
-    description: `The #1 student focused site for college reviews`,
+    title: "Rate My College Dubai | College Reviews in Dubai",
+    description: `The #1 student focused site for college reviews in Dubai`,
     image: "/logo.png",
     type: "website",
   };
@@ -34,6 +34,8 @@ export default function Home() {
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         <meta property="author" content={meta.title} />
+        {/* add alternate titles */}
+
       </Head>
 
       <main>
