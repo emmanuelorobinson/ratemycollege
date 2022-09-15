@@ -3,6 +3,7 @@ import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 import Star from "./Star";
+import WriteReview from "./WriteReview";
 import { useDispatch, useSelector } from "react-redux";
 import { reviewActions } from "../store/review-slice";
 
@@ -40,11 +41,15 @@ const Review = ({ showReview, setShowReview }) => {
   const [campus, rateCampus] = useState(0);
   const [faculty, rateFaculty] = useState(0);
   const [community, rateCommunity] = useState(0);
+  const [writeReview, setWriteReview] = useState(false);
 
   const setCampus = (value) => {
     rateCampus(value);
 
     console.log(campus);
+    console.log(faculty);
+    console.log(community);
+    c
   };
 
 
@@ -56,9 +61,10 @@ const Review = ({ showReview, setShowReview }) => {
             <ModalWrapper showReview={showReview}>
               {/* <ModalImg src={require('./modal.jpg')} alt='camera' /> */}
               <ModalContent>
-                <Star rate={campus} setRate={setCampus} title={"Rate the campus"}/>
+                <Star rate={campus} setRate={rateCampus} title={"Rate the campus"}/>
                 <Star rate={faculty} setRate={rateFaculty} title={"Rate the faculty"}/>
                 <Star rate={community} setRate={rateCommunity} title={"Rate the community"}/>
+                <WriteReview setReview={setWriteReview} />
                 
               </ModalContent>
               <CloseModalButton
@@ -86,7 +92,7 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 1000px;
+  width: 950px;
   height: 800px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
@@ -95,10 +101,24 @@ const ModalWrapper = styled.div`
   grid-template-columns: 1fr;
   position: relative;
   z-index: 10;
-  border-radius: 5px;
+  border-radius: 10px;
   
-  //allow for scrolling
-  overflow-y: auto;
+  //allow for scrolling and show scroll within modal
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
 `;
 
