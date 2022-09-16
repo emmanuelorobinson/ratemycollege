@@ -45,7 +45,7 @@ export default function Home() {
         <Feature />
         <Footer />
         <Modal showModal={showModal} />
-        <Review showReview={true} />
+        {/* <Review showReview={true} /> */}
 
       </main>
     </StyledLanding>

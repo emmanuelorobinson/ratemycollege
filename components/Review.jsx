@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 import Star from "./Star";
 import WriteReview from "./WriteReview";
+import ReviewSubmit from "./ReviewSubmit";
 import { useDispatch, useSelector } from "react-redux";
 import { reviewActions } from "../store/review-slice";
 
@@ -41,17 +42,21 @@ const Review = ({ showReview, setShowReview }) => {
   const [campus, rateCampus] = useState(0);
   const [faculty, rateFaculty] = useState(0);
   const [community, rateCommunity] = useState(0);
-  const [writeReview, setWriteReview] = useState(false);
+  const [writeReview, setWriteReview] = useState("");
 
-  const setCampus = (value) => {
-    rateCampus(value);
+  const submitReview = () => {
+    if (
+      campus === 0 ||
+      faculty === 0 ||
+      community === 0 ||
+      writeReview === ""
+    ) {
+      alert("Please rate all the categories");
+    }
 
-    console.log(campus);
-    console.log(faculty);
-    console.log(community);
-    c
+    // send data to backend
+    console.log(campus, faculty, community, writeReview);
   };
-
 
   return (
     <>
@@ -61,11 +66,23 @@ const Review = ({ showReview, setShowReview }) => {
             <ModalWrapper showReview={showReview}>
               {/* <ModalImg src={require('./modal.jpg')} alt='camera' /> */}
               <ModalContent>
-                <Star rate={campus} setRate={rateCampus} title={"Rate the campus"}/>
-                <Star rate={faculty} setRate={rateFaculty} title={"Rate the faculty"}/>
-                <Star rate={community} setRate={rateCommunity} title={"Rate the community"}/>
+                <Star
+                  rate={campus}
+                  setRate={rateCampus}
+                  title={"Rate the campus"}
+                />
+                <Star
+                  rate={faculty}
+                  setRate={rateFaculty}
+                  title={"Rate the faculty"}
+                />
+                <Star
+                  rate={community}
+                  setRate={rateCommunity}
+                  title={"Rate the community"}
+                />
                 <WriteReview setReview={setWriteReview} />
-                
+                <ReviewSubmit submitReview={submitReview} />
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
@@ -102,7 +119,7 @@ const ModalWrapper = styled.div`
   position: relative;
   z-index: 10;
   border-radius: 10px;
-  
+
   //allow for scrolling and show scroll within modal
   overflow-y: scroll;
   overflow-x: hidden;
@@ -119,7 +136,6 @@ const ModalWrapper = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-
 `;
 
 const ModalContent = styled.div`
