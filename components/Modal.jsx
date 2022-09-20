@@ -32,7 +32,6 @@ const Modal = ({ showModal, setShowModal }) => {
     if (e.key === "Escape" && showModal) {
       // setShowModal(false);
       dispatch(loginActions.showSignInModal());
-      console.log("I pressed");
     }
   });
 

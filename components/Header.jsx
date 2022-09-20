@@ -22,6 +22,10 @@ const Header = () => {
             alt="RateMyCollegeDubai Logo"
             width={44}
             height={46}
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            style={{ cursor: "pointer" }} 
           />
         </div>
         <div className="signin">

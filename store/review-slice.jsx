@@ -8,7 +8,7 @@ const reviewSlice = createSlice({
   name: "review",
   initialState,
   reducers: {
-    showSignInModal(state) {
+    showReviewModal(state) {
       state.showReview = !state.showReview;
     }
   }

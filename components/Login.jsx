@@ -18,7 +18,6 @@ const Login = (props) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    console.log(user);
     try {
       await login(data.email, data.password);
 
