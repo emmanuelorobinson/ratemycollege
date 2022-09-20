@@ -5,6 +5,7 @@ import Feature from "../components/Feature";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import Modal from "../components/Modal";
+import Review from "../components/Review";
 
 import { useSelector } from "react-redux";
 
@@ -44,6 +45,7 @@ export default function Home() {
         <Feature />
         <Footer />
         <Modal showModal={showModal} />
+        {/* <Review showReview={true} /> */}
 
       </main>
     </StyledLanding>
