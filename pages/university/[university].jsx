@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import styled from "styled-components";
 import UniversityInfo from "../../components/UniversityInfo";
 import Review from "../../components/Review";
+import StudentReviews from "../../components/StudentReviews";
+
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
 
@@ -25,8 +27,7 @@ import { useEffect } from "react";
 import { loginActions } from "../../store/login-slice";
 
 const University = () => {
-
-  const {user} = useAuth();
+  const { user } = useAuth();
   const dispatch = useDispatch();
   const router = useRouter();
   const [universityDetails, setUniversityDetails] = React.useState({});
@@ -61,7 +62,6 @@ const University = () => {
     console.log(universityDetails);
   }
 
-  
   const handleReview = (e) => {
     e.preventDefault();
 
@@ -99,8 +99,11 @@ const University = () => {
         <div className="left">
           <UniversityInfo universityInfo={universityDetails} />
         </div>
+        <div className="right">
+          <h2>All Reviews</h2>
+          <StudentReviews />
+        </div>
       </div>
-      <div onClick={getAllUniversities}>{university}</div>
 
       <Review showReview={showReview} university={universityDetails.name} />
       <Modal showModal={showLogin} />
@@ -143,10 +146,24 @@ const StyledUniversity = styled.div`
 
   .university-details {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 0 20px;
     margin-top: 20px;
     margin-left: 20px;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      flex-direction: row;
+      width: 35%;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      width: 65%;
+      margin-top: -20px
+    }
   }
 `;
 
