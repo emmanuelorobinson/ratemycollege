@@ -6,26 +6,21 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsPhone, BsGlobe } from "react-icons/bs";
 import { IoStarSharp } from "react-icons/io5";
 
+
+
 const UniversityInfo = ({ universityInfo, rating }) => {
   const img = `/universityImg/${universityInfo.name}.jpg`;
 
   //check if img exists
   const imgExists = () => {
-    
-
-    // request the image from path "img"
-    // if returns text/html, then the image does not exist
-    var req = new XMLHttpRequest();
-    req.open("GET", img, false);
-    req.send();
-
-    if (req.status == 200) {
-      return true;
-    } else {
+        
+    try {
+      return require(`/public/universityImg/${universityInfo.name}.jpg`);
+    }
+    catch (err) {
       return false;
     }
-
-
+    
 
   };
 
