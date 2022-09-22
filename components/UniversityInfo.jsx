@@ -10,24 +10,15 @@ import { IoStarSharp } from "react-icons/io5";
 
 const UniversityInfo = ({ universityInfo, rating }) => {
   //check if img exists
-  const imgExists = () => {
-        
-    try {
-      return require(`/public/universityImg/${universityInfo.name}.jpg`);
-    }
-    catch (err) {
-      return false;
-    }
-    
 
-  };
+  const img = universityInfo.image ? universityInfo.image : null;
+
 
   return (
     <StyledUniversityInfo>
       <div className="img-holder">
         <Image
-          // src={"/defaultimage.jpg"}
-          src={imgExists() ? `/universityImg/${universityInfo.name}.jpg` : "/defaultimage.jpg"}
+          src={img ? img : "/defaultimage.jpg"}
           width={300}
           height={200}
           alt={` ${universityInfo.name} image`}

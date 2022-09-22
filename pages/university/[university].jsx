@@ -99,6 +99,7 @@ const University = () => {
       longitude: universityData.location._long,
       website: universityData.website,
       phone: universityData.phoneNumber,
+      image: universityData.image ? universityData.image : null,
     });
 
     getAllAverageRating();
