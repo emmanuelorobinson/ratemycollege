@@ -74,10 +74,17 @@ const Review = ({ showReview, setShowReview, university }) => {
         faculty: faculty,
         community: community,
         review: writeReview,
+        // store date and time in yyyy-mm-dd hh:mm format
+        date: new Date().toLocaleString(),
+        likes: 0,
+        average: (campus + faculty + community) / 3,
       };
 
       // add rating to firestore
       const docRef = await addDoc(collection(db, "student_review"), rating);
+
+      // close modal
+      dispatch(reviewActions.showReviewModal());
     }
   };
 
@@ -132,7 +139,7 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 950px;
+  width: 850px;
   height: 800px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;

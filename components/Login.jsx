@@ -22,7 +22,7 @@ const Login = (props) => {
       await login(data.email, data.password);
 
       dispatch(loginActions.showSignInModal());
-      router.push("/");
+      router.push(router.asPath);
     } catch (err) {
       console.log(err);
       alert("Invalid email or password");

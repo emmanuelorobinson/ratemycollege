@@ -23,7 +23,7 @@ const ReviewSubmit = (props) => {
 
 const Container = styled.div`
   box-sizing: border-box;
-  width: 800px;
+  width: 700px;
   height: 170px;
   background: #ffffff;
   border: 1px solid #c0c0c0;
@@ -42,14 +42,14 @@ const Container = styled.div`
   h2 {
     margin-top: -10px;
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
-    width: 700px;
+    width: 600px;
     font-weight: 500;
   }
 
   button {
-    width: 250px;
+    width: 240px;
     height: 50px;
     border-radius: 30px;
 

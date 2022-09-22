@@ -4,9 +4,9 @@ import Image from "next/image";
 import styled from "styled-components";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsPhone, BsGlobe } from "react-icons/bs";
-import {IoStarSharp} from "react-icons/io5"
+import { IoStarSharp } from "react-icons/io5";
 
-const UniversityInfo = ({ universityInfo }) => {
+const UniversityInfo = ({ universityInfo, rating }) => {
   return (
     <StyledUniversityInfo>
       <div className="img-holder">
@@ -30,21 +30,27 @@ const UniversityInfo = ({ universityInfo }) => {
         </div>
         <div className="info">
           <BsGlobe className="img-hold" />
-          <p>{universityInfo.website}</p>
+          <p>
+            <a href={universityInfo.website} target="_blank" >{universityInfo.website}</a>
+          </p>
         </div>
         <div className="star">
-          <p>{universityInfo.rating ? universityInfo.rating : 0 }</p>
+          <p>{rating ? Math.round(rating) : 0}</p>
           {/* number of stars */}
-          {
-            Array.from({length: 5}, (_, i) => {
-
-              if (i < universityInfo.rating) {
-                return <IoStarSharp size={20} style={{color: "#357F7F"}} key={i} />
-              }
-              return <IoStarSharp size={20} style={{color: "rgb(192,192,192)"}} key={i}/>
+          {Array.from({ length: 5 }, (_, i) => {
+            if (i < Math.round(rating)) {
+              return (
+                <IoStarSharp size={20} style={{ color: "#357F7F" }} key={i} />
+              );
             }
-            )
-          }
+            return (
+              <IoStarSharp
+                size={20}
+                style={{ color: "rgb(192,192,192)" }}
+                key={i}
+              />
+            );
+          })}
         </div>
       </div>
     </StyledUniversityInfo>
@@ -91,11 +97,10 @@ const StyledUniversityInfo = styled.div`
 
   .img-hold {
     margin-right: 10px;
-    color: #357F7F;
+    color: #357f7f;
   }
 
   .star {
-
     margin-top: 5px;
 
     display: flex;

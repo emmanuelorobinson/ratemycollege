@@ -7,6 +7,7 @@ import StudentReviews from "../../components/StudentReviews";
 
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
+import { IoStarSharp } from "react-icons/io5";
 
 import {
   addDoc,
@@ -41,6 +42,46 @@ const University = () => {
 
   const { university } = router.query;
 
+  const [reviews, setReviews] = React.useState({
+    campus: 0,
+    faculty: 0,
+    community: 0,
+    commulative: 0,
+  });
+
+  async function getAllAverageRating() {
+    const querySnapshot = await getDocs(collection(db, "student_review"));
+
+    const reviews = querySnapshot.docs.filter(
+      (doc) => doc.data().universityName === university
+    );
+
+    const reviewsData = reviews.map((review) => review.data());
+
+    console.log(reviewsData);
+
+    const temp = {
+      campus: 0,
+      faculty: 0,
+      community: 0,
+      commulative: 0,
+    };
+
+    for (let review of reviewsData) {
+      temp.campus += review.campus;
+      temp.faculty += review.faculty;
+      temp.community += review.community;
+      temp.commulative += review.average ? review.average : 0;
+    }
+
+    temp.campus = temp.campus / reviewsData.length;
+    temp.faculty = temp.faculty / reviewsData.length;
+    temp.community = temp.community / reviewsData.length;
+    temp.commulative = temp.commulative / reviewsData.length;
+
+    setReviews(temp);
+  }
+
   async function getAllUniversities() {
     const querySnapshot = await getDocs(collection(db, "university"));
 
@@ -59,7 +100,7 @@ const University = () => {
       phone: universityData.phoneNumber,
     });
 
-    console.log(universityDetails);
+    getAllAverageRating();
   }
 
   const handleReview = (e) => {
@@ -88,6 +129,9 @@ const University = () => {
             width={50}
             height={39}
             alt="back arrow to homepage"
+            style={{ cursor: "pointer" }}
+
+            onClick={() => router.push("/")}
           />
           <h4>Back to Home</h4>
         </div>
@@ -97,11 +141,85 @@ const University = () => {
       </div>
       <div className="university-details">
         <div className="left">
-          <UniversityInfo universityInfo={universityDetails} />
+          <UniversityInfo
+            universityInfo={universityDetails}
+            rating={reviews.commulative}
+          />
+
+          <h3>Rating Breakdown</h3>
+          <div className="rating-breakdown">
+            <p>Campus</p>
+            <div className="star">
+              {Array.from({ length: 5 }, (_, i) => {
+                if (i < Math.round(reviews.campus)) {
+                  return (
+                    <IoStarSharp
+                      size={20}
+                      style={{ color: "#357F7F" }}
+                      key={i}
+                    />
+                  );
+                }
+                return (
+                  <IoStarSharp
+                    size={20}
+                    style={{ color: "rgb(192,192,192)" }}
+                    key={i}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          <div className="rating-breakdown">
+            <p>Faculty</p>
+            <div className="star">
+              {Array.from({ length: 5 }, (_, i) => {
+                if (i < Math.round(reviews.faculty)) {
+                  return (
+                    <IoStarSharp
+                      size={20}
+                      style={{ color: "#357F7F" }}
+                      key={i}
+                    />
+                  );
+                }
+                return (
+                  <IoStarSharp
+                    size={20}
+                    style={{ color: "rgb(192,192,192)" }}
+                    key={i}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          <div className="rating-breakdown">
+            <p>Community</p>
+            <div className="star">
+              {Array.from({ length: 5 }, (_, i) => {
+                if (i < Math.round(reviews.community)) {
+                  return (
+                    <IoStarSharp
+                      size={20}
+                      style={{ color: "#357F7F" }}
+                      key={i}
+                    />
+                  );
+                }
+                return (
+                  <IoStarSharp
+                    size={20}
+                    style={{ color: "rgb(192,192,192)" }}
+                    key={i}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </div>
         <div className="right">
           <h2>All Reviews</h2>
-          <StudentReviews />
+          <StudentReviews universityName={universityDetails.name} />
         </div>
       </div>
 
@@ -117,7 +235,6 @@ const StyledUniversity = styled.div`
     flex-direction: row;
     justify-content: space-between;
     padding: 0 20px;
-
     width: 100%;
 
     .left {
@@ -129,6 +246,7 @@ const StyledUniversity = styled.div`
 
     button {
       background-color: #357f7f;
+      color: white;
       border: 1px solid #f5f5f5;
       border-radius: 20px;
       padding: 10px 20px;
@@ -152,17 +270,62 @@ const StyledUniversity = styled.div`
     margin-left: 20px;
     justify-content: space-between;
 
+    /* change flex to column on mobile */
+    @media (max-width: 950px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     .left {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       width: 35%;
+      margin-bottom: 20px;
+
+      h3 {
+        text-align: center;
+        width: 300px;
+
+      }
+
+      @media (max-width: 950px) {
+        margin-bottom: 50px;
+      }
+    }
+
+    .rating-breakdown {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 250px;
+      align-items: center;
+      margin-left: 20px;
+      margin-bottom: 10px;
+
+      p {
+        line-height: 0px;
+        margin-top: 10px;
+        font-weight: 700;
+      }
     }
 
     .right {
       display: flex;
       flex-direction: column;
       width: 65%;
-      margin-top: -20px
+      margin-top: -20px;
+
+      h2 {
+        @media (max-width: 950px) {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 950px) {
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 `;

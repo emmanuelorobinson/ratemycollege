@@ -43,7 +43,7 @@ const Container = styled.div`
 
   box-sizing: border-box;
 
-  width: 800px;
+  width: 700px;
   height: 600px;
 
   background: #ffffff;
@@ -72,7 +72,7 @@ const Container = styled.div`
   h3 {
     /* Talk about your university, your likes and dislikes, and the ability of the university to meet student requirements */
 
-    width: 750px;
+    width: 650px;
     height: 56px;
 
     margin-left: 30px;
@@ -89,7 +89,7 @@ const Container = styled.div`
 const Guidelines = styled.div`
   /* Rectangle 19 */
 
-  width: 740px;
+  width: 640px;
   height: 148px;
 
   background: #f7f7f7;
@@ -116,7 +116,7 @@ const Input = styled.textarea`
 
   margin-top: 30px;
 
-  width: 740px;
+  width: 640px;
   height: 240px;
   left: 142px;
   top: 1175px;
