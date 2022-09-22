@@ -54,7 +54,7 @@ const UniversityInfo = ({ universityInfo, rating }) => {
         <div className="info">
           <BsGlobe className="img-hold" />
           <p>
-            <a href={universityInfo.website} target="_blank">
+            <a href={universityInfo.website} target="_blank" rel="noreferrer">
               {universityInfo.website}
             </a>
           </p>
