@@ -18,12 +18,11 @@ const Login = (props) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    console.log(user);
     try {
       await login(data.email, data.password);
 
       dispatch(loginActions.showSignInModal());
-      router.push("/");
+      router.push(router.asPath);
     } catch (err) {
       console.log(err);
       alert("Invalid email or password");

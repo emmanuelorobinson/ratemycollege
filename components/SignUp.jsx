@@ -10,8 +10,7 @@ const SignUp = (props) => {
   const router = useRouter();
   const { user, signup } = useAuth();
   const dispatch = useDispatch();
-
-  console.log(user);
+  
   const [data, setData] = useState({
     email: "",
     password: "",
