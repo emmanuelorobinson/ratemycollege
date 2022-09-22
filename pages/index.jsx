@@ -15,7 +15,7 @@ export default function Home() {
   const [options, setOptions] = useState([]);
   const onInputChange = (event) => {
     setOptions(
-      defaultOptions.filter((option) => option.toLowerCase().includes(event.target.value))
+      defaultOptions.filter((option) => option.toLowerCase().includes(event.target.value.toLowerCase()))
     );
   };
 
