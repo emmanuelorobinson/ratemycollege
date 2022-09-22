@@ -22,15 +22,12 @@ const Modal = ({ showModal, setShowModal }) => {
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
-      //setShowModal(false);
       dispatch(loginActions.showSignInModal());
     }
-    //window.location.reload();
   };
 
   const keyPress = useCallback((e) => {
     if (e.key === "Escape" && showModal) {
-      // setShowModal(false);
       dispatch(loginActions.showSignInModal());
     }
   });

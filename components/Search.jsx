@@ -21,13 +21,6 @@ const Search = (props) => {
       onInputChange(event);
     });
 
-    
-
-
-    // document.addEventListener("click", (event) => {
-    //   ulRef.current.style.display = "none";
-    // });
-    
   }, []);
 
   const handleClickOutside = (event) => {
@@ -64,10 +57,7 @@ const Search = (props) => {
                   key={index}
                   onClick={(e) => {
                     inputRef.current.value = option;
-                    
-                    // // navigate to the college page
-                    // window.location.href = `/university/${option}`;
-                    // use router
+                
                     router.push(`/university/${option}`);
                   }}
                   className="list-group-item list-group-item-action"
@@ -180,6 +170,28 @@ const StyledSearch = styled.div`
 
     align-items: center;
     justify-content: center;
+
+    overflow-x: hidden;
+
+    // scrollbar
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+      overflow: hidden;
+      
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+      overflow: hidden;
+    }
   }
 
   .list-group-item {
