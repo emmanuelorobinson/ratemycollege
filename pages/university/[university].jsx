@@ -282,6 +282,8 @@ const StyledUniversity = styled.div`
       flex-direction: column;
       width: 35%;
       margin-bottom: 20px;
+      margin-left: 40px;
+      margin-right: -40px;
 
       h3 {
         text-align: center;
@@ -291,6 +293,8 @@ const StyledUniversity = styled.div`
 
       @media (max-width: 950px) {
         margin-bottom: 50px;
+        margin-left: 0px;
+        margin-right: 0px;
       }
     }
 

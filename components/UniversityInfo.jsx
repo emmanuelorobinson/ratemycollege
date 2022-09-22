@@ -7,11 +7,34 @@ import { BsPhone, BsGlobe } from "react-icons/bs";
 import { IoStarSharp } from "react-icons/io5";
 
 const UniversityInfo = ({ universityInfo, rating }) => {
+  const img = `/universityImg/${universityInfo.name}.jpg`;
+
+  //check if img exists
+  const imgExists = () => {
+    
+
+    // request the image from path "img"
+    // if returns text/html, then the image does not exist
+    var req = new XMLHttpRequest();
+    req.open("GET", img, false);
+    req.send();
+
+    if (req.status == 200) {
+      return true;
+    } else {
+      return false;
+    }
+
+
+
+  };
+
   return (
     <StyledUniversityInfo>
       <div className="img-holder">
         <Image
-          src={"/defaultimage.jpg"}
+          // src={"/defaultimage.jpg"}
+          src={imgExists() ? img : "/defaultimage.jpg"}
           width={300}
           height={200}
           alt={` ${universityInfo.name} image`}
@@ -31,7 +54,9 @@ const UniversityInfo = ({ universityInfo, rating }) => {
         <div className="info">
           <BsGlobe className="img-hold" />
           <p>
-            <a href={universityInfo.website} target="_blank" >{universityInfo.website}</a>
+            <a href={universityInfo.website} target="_blank">
+              {universityInfo.website}
+            </a>
           </p>
         </div>
         <div className="star">

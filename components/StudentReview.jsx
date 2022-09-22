@@ -5,6 +5,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoStarSharp } from "react-icons/io5";
 import { GiChewedHeart } from "react-icons/gi";
 import { useAuth } from "../context/AuthContext";
+var Filter = require('bad-words')
 
 import { db } from "../config/firebase";
 import {
@@ -18,6 +19,10 @@ import {
 const StudentReview = (props) => {
 
   const { user } = useAuth();
+
+  const filter = new Filter();
+
+  const cleanReview = filter.clean(props.review.review);
 
   //get date part from date string
   const date = props.review.date.split(",")[0];
@@ -84,7 +89,7 @@ const StudentReview = (props) => {
         </div>
       </div>
       <div>
-        <p>{props.review.review}</p>
+        <p>{cleanReview}</p>
       </div>
       <div className="review-footer">
         <p>{props.review.likes}</p>
