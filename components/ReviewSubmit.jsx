@@ -5,7 +5,7 @@ const ReviewSubmit = (props) => {
   return (
     <Container>
       <h2>
-        By clickin the &quot;Submit&quot; button. I acknowledge that I have
+        By clicking the &quot;Submit&quot; button. I acknowledge that I have
         agreed to Rate My College Dubai Site Guidelines. Submitted dat becomes
         the property of RateMyCollegeDubai.com
       </h2>
