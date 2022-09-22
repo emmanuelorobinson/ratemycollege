@@ -9,8 +9,6 @@ import { IoStarSharp } from "react-icons/io5";
 
 
 const UniversityInfo = ({ universityInfo, rating }) => {
-  const img = `/universityImg/${universityInfo.name}.jpg`;
-
   //check if img exists
   const imgExists = () => {
         
@@ -29,7 +27,7 @@ const UniversityInfo = ({ universityInfo, rating }) => {
       <div className="img-holder">
         <Image
           // src={"/defaultimage.jpg"}
-          src={imgExists() ? img : "/defaultimage.jpg"}
+          src={imgExists() ? `/universityImg/${universityInfo.name}.jpg` : "/defaultimage.jpg"}
           width={300}
           height={200}
           alt={` ${universityInfo.name} image`}

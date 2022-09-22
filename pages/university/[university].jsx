@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Header from "../../components/Header";
 import styled from "styled-components";
 import UniversityInfo from "../../components/UniversityInfo";
@@ -118,6 +119,20 @@ const University = () => {
 
   return (
     <StyledUniversity>
+      <Head>
+        <title>{`university/${university}`}</title>
+        <meta name="description" content={`review page for ${university}`} />
+        <link rel="icon" href="/logo.png" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+        <meta property="og:type" content={`website`} />
+        <meta property="og:description" content={`review page for ${university}`} />
+        <meta property="og:title" content={`university/${university}`} />
+        <meta property="og:image" content={`/logo/png`} />
+        {/* add alternate titles */}
+      </Head>
       <Header />
       <div className="map-head">
         <iframe src={map} frameBorder="1" height="330px" width="100%"></iframe>
