@@ -27,6 +27,7 @@ const Star = (props) => {
                       ? "#357F7F"
                       : "rgb(192,192,192)"
                   }
+
                 />
               </Rating>
             </label>
@@ -43,7 +44,7 @@ const Star = (props) => {
 
 const Container = styled.div`
   box-sizing: border-box;
-  width: 800px;
+  width: 700px;
   height: 170px;
   background: #ffffff;
   border: 1px solid #c0c0c0;
@@ -69,12 +70,12 @@ const Container = styled.div`
 
     position: relative;
 
-    left: -280px;
+    left: -240px;
     top: 10px;
 
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
 
     color: #000000;
@@ -93,7 +94,7 @@ const Container = styled.div`
 
       font-style: normal;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 22px;
 
       color: #727272;

@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import isMobile from "../utils/isMobile";
+import { useRouter,  } from "next/router";
 
-const Search = () => {
+
+
+const Search = (props) => {
+  const { options, onInputChange } = props;
+
+  const router = useRouter();
+
+  const ulRef = useRef();
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.addEventListener("click", (event) => {
+      event.stopPropagation();
+      ulRef.current.style.display = "flex";
+      onInputChange(event);
+    });
+
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (ulRef.current && !ulRef.current.contains(event.target)) {
+      ulRef.current.style.display = "none";
+    }
+  };
+
   return (
-    <StyledSearch>
-      <div className="back-img"></div>
+    <StyledSearch onClick={handleClickOutside}>
+      <div className="back-img" ></div>
       <h1>The #1 student focused site for college reviews</h1>
       <div>
-        <form action="">
+        <form>
           <div className="img">
             <Image
               src="/svgs/searchicon.svg"
@@ -18,7 +43,30 @@ const Search = () => {
               height={26}
             />
           </div>
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            ref={inputRef}
+            onChange={onInputChange}
+          />
+          <ul id="results" className="list-group" ref={ulRef}>
+            {options.map((option, index) => {
+              return (
+                <button
+                  type="button"
+                  key={index}
+                  onClick={(e) => {
+                    inputRef.current.value = option;
+                
+                    router.push(`/university/${option}`);
+                  }}
+                  className="list-group-item list-group-item-action"
+                >
+                  {option}
+                </button>
+              );
+            })}
+          </ul>
         </form>
       </div>
     </StyledSearch>
@@ -103,6 +151,69 @@ const StyledSearch = styled.div`
       width: inherit;
     }
   }
+
+  .list-group {
+    position: absolute;
+    margin-top: 10px;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow-x: hidden;
+
+    // scrollbar
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+      overflow: hidden;
+      
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+
+  .list-group-item {
+    
+    margin-right: 30px;
+
+    width: 400px;
+
+    padding: 10px;
+    font-size: 16px;
+    color: #262626;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .list-group-item-action{
+    &:hover{
+      background-color: #f2f2f2;
+    }
+  }
+  
 `;
 
 export default Search;

@@ -7,9 +7,11 @@ import Modal from "./Modal";
 import { useAuth } from "../context/AuthContext";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../store/login-slice";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const { user, logout } = useAuth();
 
@@ -22,6 +24,10 @@ const Header = () => {
             alt="RateMyCollegeDubai Logo"
             width={44}
             height={46}
+            onClick={() => {
+              router.push("/");
+            }}
+            style={{ cursor: "pointer" }} 
           />
         </div>
         <div className="signin">

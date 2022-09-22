@@ -1,0 +1,146 @@
+import React from "react";
+import Image from "next/image";
+
+import styled from "styled-components";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { BsPhone, BsGlobe } from "react-icons/bs";
+import { IoStarSharp } from "react-icons/io5";
+
+const UniversityInfo = ({ universityInfo, rating }) => {
+  const img = `/universityImg/${universityInfo.name}.jpg`;
+
+  //check if img exists
+  const imgExists = () => {
+    
+
+    // request the image from path "img"
+    // if returns text/html, then the image does not exist
+    var req = new XMLHttpRequest();
+    req.open("GET", img, false);
+    req.send();
+
+    if (req.status == 200) {
+      return true;
+    } else {
+      return false;
+    }
+
+
+
+  };
+
+  return (
+    <StyledUniversityInfo>
+      <div className="img-holder">
+        <Image
+          // src={"/defaultimage.jpg"}
+          src={imgExists() ? img : "/defaultimage.jpg"}
+          width={300}
+          height={200}
+          alt={` ${universityInfo.name} image`}
+          style={{ borderRadius: "21px" }}
+        />
+        <h1>{universityInfo.name}</h1>
+      </div>
+      <div className="info-wrapper">
+        <div className="info">
+          <HiOutlineLocationMarker className="img-hold" />
+          <p>{universityInfo.address}</p>
+        </div>
+        <div className="info">
+          <BsPhone className="img-hold" />
+          <p>{universityInfo.phone}</p>
+        </div>
+        <div className="info">
+          <BsGlobe className="img-hold" />
+          <p>
+            <a href={universityInfo.website} target="_blank">
+              {universityInfo.website}
+            </a>
+          </p>
+        </div>
+        <div className="star">
+          <p>{rating ? Math.round(rating) : 0}</p>
+          {/* number of stars */}
+          {Array.from({ length: 5 }, (_, i) => {
+            if (i < Math.round(rating)) {
+              return (
+                <IoStarSharp size={20} style={{ color: "#357F7F" }} key={i} />
+              );
+            }
+            return (
+              <IoStarSharp
+                size={20}
+                style={{ color: "rgb(192,192,192)" }}
+                key={i}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </StyledUniversityInfo>
+  );
+};
+
+const StyledUniversityInfo = styled.div`
+  /* image 9 */
+
+  .img-holder {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+  }
+
+  h1 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 520;
+    font-size: 24px;
+    line-height: 36px;
+
+    text-align: center;
+  }
+
+  p {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .info-wrapper {
+    line-height: 10px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+  }
+
+  .img-hold {
+    margin-right: 10px;
+    color: #357f7f;
+  }
+
+  .star {
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
+
+    width: 300px;
+
+    p {
+      font-size: 18px;
+
+      margin-right: 10px;
+    }
+  }
+`;
+
+export default UniversityInfo;

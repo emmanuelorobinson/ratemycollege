@@ -7,8 +7,22 @@ import WriteReview from "./WriteReview";
 import ReviewSubmit from "./ReviewSubmit";
 import { useDispatch, useSelector } from "react-redux";
 import { reviewActions } from "../store/review-slice";
+import { db } from "../config/firebase";
+import { useAuth } from "../context/AuthContext";
 
-const Review = ({ showReview, setShowReview }) => {
+import {
+  addDoc,
+  collection,
+  updateDoc,
+  getDocs,
+  doc,
+} from "firebase/firestore";
+
+const Review = ({ showReview, setShowReview, university }) => {
+  const { user } = useAuth();
+
+  // console.log(user.email);
+
   const dispatch = useDispatch();
 
   const modalRef = useRef();
@@ -23,13 +37,13 @@ const Review = ({ showReview, setShowReview }) => {
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
-      dispatch(reviewActions.showReview());
+      dispatch(reviewActions.showReviewModal());
     }
   };
 
   const keyPress = useCallback((e) => {
     if (e.key === "Escape" && showReview) {
-      dispatch(reviewActions.showReview());
+      dispatch(reviewActions.showReviewModal());
       console.log("I pressed");
     }
   });
@@ -44,7 +58,7 @@ const Review = ({ showReview, setShowReview }) => {
   const [community, rateCommunity] = useState(0);
   const [writeReview, setWriteReview] = useState("");
 
-  const submitReview = () => {
+  const submitReview = async () => {
     if (
       campus === 0 ||
       faculty === 0 ||
@@ -52,10 +66,26 @@ const Review = ({ showReview, setShowReview }) => {
       writeReview === ""
     ) {
       alert("Please rate all the categories");
-    }
+    } else {
+      const rating = {
+        user: user.email,
+        universityName: university,
+        campus: campus,
+        faculty: faculty,
+        community: community,
+        review: writeReview,
+        // store date and time in yyyy-mm-dd hh:mm format
+        date: new Date().toLocaleString(),
+        likes: 0,
+        average: (campus + faculty + community) / 3,
+      };
 
-    // send data to backend
-    console.log(campus, faculty, community, writeReview);
+      // add rating to firestore
+      const docRef = await addDoc(collection(db, "student_review"), rating);
+
+      // close modal
+      dispatch(reviewActions.showReviewModal());
+    }
   };
 
   return (
@@ -86,7 +116,7 @@ const Review = ({ showReview, setShowReview }) => {
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
-                onClick={() => dispatch(reviewActions.showReview())}
+                onClick={() => dispatch(reviewActions.showReviewModal())}
               />
             </ModalWrapper>
           </animated.div>
@@ -109,7 +139,7 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 950px;
+  width: 850px;
   height: 800px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
