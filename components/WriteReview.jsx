@@ -41,7 +41,6 @@ const WriteReview = (props) => {
 const Container = styled.div`
   /* Rectangle 18 */
 
-  box-sizing: border-box;
 
   width: 700px;
   height: 600px;
@@ -84,6 +83,27 @@ const Container = styled.div`
 
     color: #000000;
   }
+
+  @media (max-width: 950px) {
+    width: 90%;
+    height: 790px;
+
+    padding: 20px;
+
+    h2 {
+      width: 90%;
+      margin-left: 0px;
+    }
+
+    h3 {
+      width: 90%;
+      
+    margin-bottom: 60px;
+    
+    margin-left: 0px;
+    }
+
+  }
 `;
 
 const Guidelines = styled.div`
@@ -106,6 +126,27 @@ const Guidelines = styled.div`
   li {
     font-weight: 500;
     height: 22px;
+  }
+
+  @media (max-width: 950px) {
+    width: 100%;
+    height: 270px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0px;
+
+    h2 {
+      font-size: 16px;
+      width: 80%;
+    }
+
+    li {
+      font-size: 14px;
+      line-height: 18px;
+      /* space between */
+      margin-bottom: 40px;
+      width: 80%;
+    }
   }
 `;
 
@@ -130,6 +171,10 @@ const Input = styled.textarea`
   font-size: 15px;
   color: #7B7B7B;
   text-indent: 10px;
+
+  @media (max-width: 950px) {
+    width: 100%;
+  }
 `;
 
 export default WriteReview;

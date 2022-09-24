@@ -92,7 +92,7 @@ const Review = ({ showReview, setShowReview, university }) => {
     <>
       {showReview ? (
         <Background onClick={closeModal} ref={modalRef}>
-          <animated.div style={animation}>
+          <animated.div style={animation} className="animated">
             <ModalWrapper showReview={showReview}>
               {/* <ModalImg src={require('./modal.jpg')} alt='camera' /> */}
               <ModalContent>
@@ -136,6 +136,20 @@ const Background = styled.div`
   align-items: center;
   top: 0;
   left: 0;
+
+  @media (max-width: 950px) {
+    /* set width to page width */
+
+    width: 100%;
+    height: 100%;
+
+    .animated {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  }
 `;
 
 const ModalWrapper = styled.div`
@@ -166,6 +180,15 @@ const ModalWrapper = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  @media (max-width: 950px) {
+    /* set width to page width */
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ModalContent = styled.div`
@@ -186,6 +209,12 @@ const ModalContent = styled.div`
     background: #141414;
     color: #fff;
     border: none;
+  }
+
+  @media (max-width: 950px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 `;
 

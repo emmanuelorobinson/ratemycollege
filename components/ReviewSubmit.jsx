@@ -39,6 +39,8 @@ const Container = styled.div`
   margin-top: -20px;
   margin-bottom: 50px;
 
+  
+
   h2 {
     margin-top: -10px;
     margin-bottom: 20px;
@@ -61,6 +63,15 @@ const Container = styled.div`
     &:hover {
       background-color: #2d6a6a;
       transition: 0.3s ease;
+    }
+  }
+
+  @media (max-width: 950px) {
+    width: 90%;
+    height: 250px;
+
+    h2 {
+      width: 90%;
     }
   }
 `;
