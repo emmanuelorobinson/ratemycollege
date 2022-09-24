@@ -308,9 +308,14 @@ const StyledUniversity = styled.div`
       }
 
       @media (max-width: 950px) {
+        width: 100%;
         margin-bottom: 50px;
         margin-left: 0px;
         margin-right: 0px;
+
+        justify-content: center;
+        align-items: center;
+
       }
     }
 
@@ -320,13 +325,23 @@ const StyledUniversity = styled.div`
       justify-content: space-between;
       width: 250px;
       align-items: center;
-      margin-left: 20px;
+      margin-left: 15px;
       margin-bottom: 10px;
 
       p {
         line-height: 0px;
         margin-top: 10px;
         font-weight: 700;
+      }
+
+      @media (max-width: 950px) {
+        width: 90%;
+        margin-left: 0px;
+        margin-right: 0px;
+
+        justify-content: space-between;
+        align-items: center;
+        
       }
     }
 
@@ -343,6 +358,7 @@ const StyledUniversity = styled.div`
       }
 
       @media (max-width: 950px) {
+        width: 100%;
         justify-content: center;
         align-items: center;
       }

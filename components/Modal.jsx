@@ -49,7 +49,7 @@ const Modal = ({ showModal, setShowModal }) => {
     <>
       {showModal ? (
         <Background onClick={closeModal} ref={modalRef}>
-          <animated.div style={animation}>
+          <animated.div style={animation} className="animated">
             <ModalWrapper showModal={showModal}>
               {/* <ModalImg src={require('./modal.jpg')} alt='camera' /> */}
               <ModalContent>
@@ -81,6 +81,14 @@ const Background = styled.div`
   align-items: center;
   top: 0;
   left: 0;
+
+  @media (max-width: 950px) {
+    /* set width to page width */
+    .animated {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 const ModalWrapper = styled.div`
@@ -94,6 +102,13 @@ const ModalWrapper = styled.div`
   position: relative;
   z-index: 10;
   border-radius: 5px;
+
+  @media (max-width: 950px) {
+    /* set width to page width */
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
 `;
 
 const ModalContent = styled.div`
@@ -114,6 +129,11 @@ const ModalContent = styled.div`
     background: #141414;
     color: #fff;
     border: none;
+  }
+
+  @media (max-width: 950px) {
+    align-items: center;
+    justify-content: center;
   }
 `;
 
