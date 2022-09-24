@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 import StarIcon from "../public/svgs/starIcon";
 
 const Star = (props) => {
+  const [size, setSize] = useState(45);
+
+  const checkSize = () => {
+    // if width is less than 600px
+    if (window.innerWidth < 900) {
+      setSize(40);
+    }
+  };
+
+  useEffect(() => {
+    checkSize();
+  }, []);
+
   return (
     <Container>
       <h2>{props.title}</h2>
@@ -27,7 +40,7 @@ const Star = (props) => {
                       ? "#357F7F"
                       : "rgb(192,192,192)"
                   }
-
+                  size={size}
                 />
               </Rating>
             </label>
@@ -43,7 +56,6 @@ const Star = (props) => {
 };
 
 const Container = styled.div`
-  box-sizing: border-box;
   width: 700px;
   height: 170px;
   background: #ffffff;
@@ -60,10 +72,28 @@ const Container = styled.div`
   margin-top: 100px;
   margin-bottom: -50px;
 
+  @media (max-width: 950px) {
+    width: 90%;
+    
+
+    /* set state of size to 20 */
+    /* setSize(20); */
+
+  }
+
   .wrapper {
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 950px) {
+      width: 80%;
+      align-items: center;
+      justify-content: center;
+      
+    }
   }
+
+  
 
   h2 {
     /* Rate the campus */
@@ -79,6 +109,11 @@ const Container = styled.div`
     line-height: 24px;
 
     color: #000000;
+
+    @media (max-width: 950px) {
+      font-size: 14px;
+      left: 0px;
+    }
   }
 
   .scale {
@@ -99,7 +134,17 @@ const Container = styled.div`
 
       color: #727272;
     }
+
+    @media (max-width: 950px) {
+      width: 80%;
+
+      p {
+        font-size: 10px;
+      }
+    }
   }
+
+  
 `;
 const Radio = styled.input`
   display: none;
@@ -107,6 +152,10 @@ const Radio = styled.input`
 const Rating = styled.div`
   cursor: pointer;
   margin: 0 10px;
+
+  @media (max-width: 950px) {
+    margin: 0 5px;
+  }
 `;
 
 export default Star;

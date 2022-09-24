@@ -1,11 +1,11 @@
 import React from "react";
 
-function StarIcon({color}) {
+function StarIcon({color, size}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="45"
-      height="45"
+      width={size}
+      height={size}
       fill="none"
       viewBox="0 0 58 55"
     >

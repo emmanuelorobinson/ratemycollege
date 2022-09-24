@@ -97,6 +97,7 @@ const StyledLogin = styled.div`
 
   .header {
     margin-left: 100px;
+
     h1 {
       /* Hi there! */
 
@@ -117,12 +118,20 @@ const StyledLogin = styled.div`
 
       color: #979797;
     }
+
+    @media (max-width: 950px) {
+      margin-left: 0;
+    }
   }
 
   .form {
     display: flex;
     flex-direction: column;
     margin-left: 100px;
+
+    @media (max-width: 950px) {
+      margin-left: 0;
+    }
   }
 
   .form-group {
@@ -142,6 +151,10 @@ const StyledLogin = styled.div`
 
       border: 2px solid #d9d9d9;
       border-radius: 3px;
+
+      @media (max-width: 950px) {
+        height: 42px;
+      }
     }
 
     button {
@@ -156,6 +169,11 @@ const StyledLogin = styled.div`
         background-color: #2d6a6a;
         transition: 0.3s ease;
       }
+
+      @media (max-width: 950px) {
+        height: 42px;
+      }
+
     }
   }
 
@@ -183,6 +201,16 @@ const StyledLogin = styled.div`
         cursor: pointer;
       }
     }
+
+    @media (max-width: 950px) {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 950px) {
+    margin-top: 0;
+    margin-right: 0;
   }
 `;
 
