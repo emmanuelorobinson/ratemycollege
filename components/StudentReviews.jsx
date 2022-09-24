@@ -21,7 +21,7 @@ const StudentReviews = (props) => {
 
   useEffect(() => {
 
-    console.log(props.university);
+    //console.log(props.university);
 
     getReviews(props.universityName);
   }, [props.universityName]);

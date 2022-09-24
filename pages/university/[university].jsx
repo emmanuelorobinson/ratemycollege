@@ -59,8 +59,6 @@ const University = () => {
 
     const reviewsData = reviews.map((review) => review.data());
 
-    console.log(reviewsData);
-
     const temp = {
       campus: 0,
       faculty: 0,
@@ -131,7 +129,7 @@ const University = () => {
         <meta property="og:type" content={`website`} />
         <meta property="og:description" content={`review page for ${university}`} />
         <meta property="og:title" content={`university/${university}`} />
-        <meta property="og:image" content={`/logo/png`} />
+        <meta property="og:image" content={`/logo.png`} />
         {/* add alternate titles */}
       </Head>
       <Header />
@@ -358,7 +356,7 @@ const StyledUniversity = styled.div`
       }
 
       @media (max-width: 950px) {
-        width: 100%;
+        width: 110%;
         justify-content: center;
         align-items: center;
       }

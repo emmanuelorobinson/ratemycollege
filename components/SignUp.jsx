@@ -22,7 +22,7 @@ const SignUp = (props) => {
     try {
       await signup(data.email, data.password);
 
-      console.log(user);
+      //console.log(user);
 
       dispatch(loginActions.showSignInModal());
       router.push('/');
