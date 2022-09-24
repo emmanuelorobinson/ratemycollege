@@ -44,7 +44,7 @@ const Review = ({ showReview, setShowReview, university }) => {
   const keyPress = useCallback((e) => {
     if (e.key === "Escape" && showReview) {
       dispatch(reviewActions.showReviewModal());
-      console.log("I pressed");
+      //console.log("I pressed");
     }
   });
 
