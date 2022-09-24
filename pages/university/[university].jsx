@@ -131,7 +131,7 @@ const University = () => {
         <meta property="og:type" content={`website`} />
         <meta property="og:description" content={`review page for ${university}`} />
         <meta property="og:title" content={`university/${university}`} />
-        <meta property="og:image" content={`/logo/png`} />
+        <meta property="og:image" content={`/logo.png`} />
         {/* add alternate titles */}
       </Head>
       <Header />
