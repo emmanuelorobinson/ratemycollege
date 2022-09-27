@@ -33,7 +33,7 @@ export default function Home() {
       <Head>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"

@@ -119,9 +119,9 @@ const University = () => {
   return (
     <StyledUniversity>
       <Head>
-        <title>{`university/${university}`}</title>
+        <title>{`University/${university}`}</title>
         <meta name="description" content={`review page for ${university}`} />
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
